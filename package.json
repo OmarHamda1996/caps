@@ -1,0 +1,17 @@
+{
+  "name": "caps-system",
+  "version": "1.0.0",
+  "description": "CAPS System",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "author": "Omar",
+  "license": "ISC",
+  "dependencies": {
+    "events": "^3.3.0"
+  },
+  "devDependencies": {
+    "jest": "^27.0.6"
+  }
+}
