@@ -1,27 +1,16 @@
 const globalEventPool = require('../hub');
 const { handlePickup, handleDelivery } = require('./handler');
 
-jest.mock('events', () => {
-  const EventEmitter = jest.requireActual('events');
-  return {
-    __esModule: true,
-    default: class extends EventEmitter {
-      emit(event, payload) {
-        console.log(`EVENT: ${event}\n${JSON.stringify(payload, null, 2)}`);
-        super.emit(event, payload);
-      }
-    },
-  };
-});
-
 describe('Driver Event Handler', () => {
   beforeEach(() => {
     jest.spyOn(console, 'log').mockImplementation();
+    jest.spyOn(globalEventPool, 'emit');
   });
 
   afterEach(() => {
     console.log.mockRestore();
     globalEventPool.removeAllListeners();
+    globalEventPool.emit.mockRestore();
   });
 
   test('should handle a pickup event and log the expected message', () => {
@@ -46,3 +35,4 @@ describe('Driver Event Handler', () => {
     expect(globalEventPool.emit).toHaveBeenCalledWith('delivered', payload);
   });
 });
+    

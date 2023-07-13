@@ -2,9 +2,10 @@
   "name": "caps-system",
   "version": "1.0.0",
   "description": "CAPS System",
-  "main": "index.js",
+  "main": "hub.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "node hub.js"
   },
   "author": "Omar",
   "license": "ISC",

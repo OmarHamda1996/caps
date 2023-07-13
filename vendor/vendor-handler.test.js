@@ -1,27 +1,16 @@
 const globalEventPool = require('../hub');
 const { handleOrder } = require('./handler');
 
-jest.mock('events', () => {
-  const EventEmitter = jest.requireActual('events');
-  return {
-    __esModule: true,
-    default: class extends EventEmitter {
-      emit(event, payload) {
-        console.log(`EVENT: ${event}\n${JSON.stringify(payload, null, 2)}`);
-        super.emit(event, payload);
-      }
-    },
-  };
-});
-
 describe('Vendor Event Handler', () => {
   beforeEach(() => {
     jest.spyOn(console, 'log').mockImplementation();
+    jest.spyOn(globalEventPool, 'emit');
   });
 
   afterEach(() => {
     console.log.mockRestore();
     globalEventPool.removeAllListeners();
+    globalEventPool.emit.mockRestore();
   });
 
   test('should handle an order event and log the expected message', () => {

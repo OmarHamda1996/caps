@@ -1,5 +1,8 @@
 const globalEventPool = require('../hub');
 
-globalEventPool.on('delivered', payload => {
-  console.log(`VENDOR: Thank you for delivering ${payload.orderId}`);
-});
+const handleOrder = (payload) => {
+  console.log(`VENDOR: received order ${payload.orderId}`);
+  globalEventPool.emit('pickup', payload);
+};
+
+module.exports = { handleOrder };
