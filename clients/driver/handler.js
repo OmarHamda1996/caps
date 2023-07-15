@@ -1,4 +1,4 @@
-const globalEventPool = require('../hub');
+const globalEventPool = require('../../hub');
 
 function handlePickup(payload) {
   console.log(`DRIVER: Pickup event received for order ${payload.orderId}`);

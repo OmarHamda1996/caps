@@ -1,4 +1,4 @@
-const globalEventPool = require('../hub');
+const globalEventPool = require('../../hub');
 const { handleOrder } = require('./handler');
 
 describe('Vendor Event Handler', () => {
