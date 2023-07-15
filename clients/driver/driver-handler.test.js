@@ -1,4 +1,4 @@
-const globalEventPool = require('../hub');
+const globalEventPool = require('../../hub');
 const { handlePickup, handleDelivery } = require('./handler');
 
 describe('Driver Event Handler', () => {
@@ -35,4 +35,3 @@ describe('Driver Event Handler', () => {
     expect(globalEventPool.emit).toHaveBeenCalledWith('delivered', payload);
   });
 });
-    

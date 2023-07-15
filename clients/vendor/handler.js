@@ -1,4 +1,4 @@
-const globalEventPool = require('../hub');
+const globalEventPool = require('../../hub');
 
 const handleOrder = (payload) => {
   console.log(`VENDOR: received order ${payload.orderId}`);
